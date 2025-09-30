@@ -2,7 +2,7 @@ package Dao;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Persistence;
-import metier.Client;
+import entities.Client;
 
 import java.util.List;
 

@@ -7,7 +7,7 @@
         <persistence-unit name="Client" transaction-type="RESOURCE_LOCAL">
             <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-            <class>metier.Client</class>
+            <class>entities.Client</class>
 
             <properties>
                 <!-- Driver SQL Server -->
