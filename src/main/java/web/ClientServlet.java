@@ -37,6 +37,22 @@ public class ClientServlet extends HttpServlet {
     }else if (path.equals("/add")){
             req.getRequestDispatcher("/WEB-INF/views/add.jsp").forward(req, resp);
         }
+        else if (path.equals("/edit")) {
+            String idStr = req.getParameter("id");
+            if (idStr != null) {
+                long id = Long.parseLong(idStr);
+                Client client = clientDao.getClient(id);
+                req.setAttribute("client", client);
+                req.getRequestDispatcher("/WEB-INF/views/edit.jsp").forward(req, resp);
+                return;
+            }
+        }
+        else if (path.equals("/delete")) {
+            long id = Long.parseLong(req.getParameter("id"));
+            clientDao.removeClient(id); // méthode à créer dans ClientDao
+            resp.sendRedirect(req.getContextPath() + "/liste");
+        }
+
 
     }
 
@@ -55,6 +71,19 @@ public class ClientServlet extends HttpServlet {
             clientDao.addClient(client);
             resp.sendRedirect(req.getContextPath()+"/liste");
         }
+        else if (path.equals("/edit")) {
+            Long id = Long.parseLong(req.getParameter("id"));
+            String nom = req.getParameter("firstname");
+            String prenom = req.getParameter("lastname");
+            String email = req.getParameter("email");
+            String telephone = req.getParameter("phone");
+
+            Client client = new Client(id, nom, prenom, email, telephone);
+            clientDao.updateClient(client); // méthode à créer dans ClientDao
+
+            resp.sendRedirect(req.getContextPath() + "/liste");
+        }
+
     }
 
    /* private void process (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

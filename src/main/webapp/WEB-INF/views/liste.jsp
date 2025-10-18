@@ -30,6 +30,14 @@
         <td><%= c.getLastName() %></td>
         <td><%= c.getEmail() %></td>
         <td><%= c.getPhone()%></td>
+        <td>
+            <a href="<%=request.getContextPath()%>/edit?id=<%=c.getId()%>">
+                <button>Éditer</button>
+            </a>
+            <a href="<%=request.getContextPath()%>/delete?id=<%=c.getId()%>" onclick="return confirm('Supprimer ce client ?');">
+                Supprimer
+            </a>
+        </td>
     </tr>
     <%
         }

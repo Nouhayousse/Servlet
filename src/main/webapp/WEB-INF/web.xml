@@ -15,11 +15,43 @@
         <url-pattern>/</url-pattern>
         <url-pattern>/liste</url-pattern>
         <url-pattern>/add</url-pattern>
+        <url-pattern>/edit</url-pattern>
+        <url-pattern>/delete</url-pattern>
     </servlet-mapping>
 
     <welcome-file-list>
         <welcome-file>ClientServlet</welcome-file>
     </welcome-file-list>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>ClientApp</web-resource-name>
+            <url-pattern>/</url-pattern>
+            <url-pattern>/liste</url-pattern>
+            <url-pattern>/add</url-pattern>
+            <url-pattern>/edit</url-pattern>
+            <url-pattern>/delete</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>admin</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <login-config>
+        <auth-method>BASIC</auth-method>
+        <form-login-config>
+            <form-login-page>/Authentification.html</form-login-page>
+            <form-error-page>/error.html</form-error-page>
+        </form-login-config>
+    </login-config>
+
+    <security-role>
+        <role-name>admin</role-name>
+    </security-role>
+    <security-role>
+        <role-name>user</role-name>
+    </security-role>
+
 
 
 </web-app>
