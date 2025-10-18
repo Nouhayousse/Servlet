@@ -1,6 +1,7 @@
+/*
 package org.example.demo2;
 
-import java.io.*;
+import  java.io.*;
 
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -25,4 +26,4 @@ public class HelloServlet extends HttpServlet {
 
     public void destroy() {
     }
-}
+}*/
